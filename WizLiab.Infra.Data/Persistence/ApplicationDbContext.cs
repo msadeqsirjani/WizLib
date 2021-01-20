@@ -12,6 +12,7 @@ namespace WizLib.Infra.Data.Persistence
         }
 
         public DbSet<Category> Categories { get; set; }
+        public DbSet<Genre> Genres { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
