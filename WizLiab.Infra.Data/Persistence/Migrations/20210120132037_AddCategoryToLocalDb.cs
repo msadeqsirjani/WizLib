@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace WizLib.Infra.Data.Migrations
+namespace WizLib.Infra.Data.Persistence.Migrations
 {
     public partial class AddCategoryToLocalDb : Migration
     {
