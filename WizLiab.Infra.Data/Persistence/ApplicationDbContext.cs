@@ -1,4 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using WizLib.Domain.Entities;
+using WizLib.Infra.Data.Persistence.Configuration;
 
 namespace WizLib.Infra.Data.Persistence
 {
@@ -7,6 +9,15 @@ namespace WizLib.Infra.Data.Persistence
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
 
+        }
+
+        public DbSet<Category> Categories { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            builder.ApplyConfiguration(new CategoryConfiguration());
+
+            base.OnModelCreating(builder);
         }
     }
 }
