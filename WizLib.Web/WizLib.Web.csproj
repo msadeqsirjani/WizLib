@@ -19,7 +19,6 @@
     <ProjectReference Include="..\WizLiab.Infra.Data\WizLiab.Infra.Data.csproj" />
     <ProjectReference Include="..\WizLib.Application\WizLib.Application.csproj" />
     <ProjectReference Include="..\WizLib.Domain\WizLib.Domain.csproj" />
-    <ProjectReference Include="..\WizLib.Infra.IoC\WizLib.Infra.IoC.csproj" />
   </ItemGroup>
 
 </Project>
