@@ -17,6 +17,7 @@ namespace WizLib.Infra.Data.Persistence
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.ApplyConfiguration(new CategoryConfiguration());
+            builder.ApplyConfiguration(new GenreConfiguration());
 
             base.OnModelCreating(builder);
         }
