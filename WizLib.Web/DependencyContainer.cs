@@ -14,7 +14,8 @@ namespace WizLib.Web
         {
             services.AddControllersWithViews();
 
-            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")))
+            services.AddDbContext<ApplicationDbContext>(options =>
+                options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
         }
 
         public static void EnableMiddleWares(this IApplicationBuilder app, IWebHostEnvironment env, IConfiguration configuration)
