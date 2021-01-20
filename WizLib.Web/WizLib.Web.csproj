@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <CopyRefAssembliesToPublishDirectory>false</CopyRefAssembliesToPublishDirectory>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="5.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\WizLiab.Infra.Data\WizLiab.Infra.Data.csproj" />
+    <ProjectReference Include="..\WizLib.Domain\WizLib.Domain.csproj" />
+    <ProjectReference Include="..\WizLib.Infra.IoC\WizLib.Infra.IoC.csproj" />
+  </ItemGroup>
+
+</Project>
