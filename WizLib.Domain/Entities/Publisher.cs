@@ -1,4 +1,5 @@
-﻿using WizLib.Domain.Common;
+﻿using System.Collections.Generic;
+using WizLib.Domain.Common;
 
 namespace WizLib.Domain.Entities
 {
@@ -6,5 +7,7 @@ namespace WizLib.Domain.Entities
     {
         public string Name { get; set; }
         public string Location { get; set; }
+
+        public List<Book> Books { get; set; }
     }
 }
