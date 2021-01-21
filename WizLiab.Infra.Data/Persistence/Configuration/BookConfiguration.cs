@@ -22,6 +22,16 @@ namespace WizLib.Infra.Data.Persistence.Configuration
             builder.Property(x => x.Price)
                 .IsRequired()
                 .HasMaxLength(3000000);
+            builder.Property(x => x.CategoryId)
+                .IsRequired();
+
+            builder.HasOne(x => x.Category)
+                .WithMany(x => x.Books)
+                .HasForeignKey(x => x.CategoryId);
+
+            builder.HasOne(x => x.BookDetail)
+                .WithOne(x => x.Book)
+                .HasForeignKey<Book>(x => x.BookDetailId);
 
             base.Configure(builder);
         }
