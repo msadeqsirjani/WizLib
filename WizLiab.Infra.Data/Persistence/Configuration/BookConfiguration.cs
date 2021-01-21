@@ -33,6 +33,10 @@ namespace WizLib.Infra.Data.Persistence.Configuration
                 .WithOne(x => x.Book)
                 .HasForeignKey<Book>(x => x.BookDetailId);
 
+            builder.HasOne(x => x.Publisher)
+                .WithMany(x => x.Books)
+                .HasForeignKey(x => x.PublisherId);
+
             base.Configure(builder);
         }
     }
