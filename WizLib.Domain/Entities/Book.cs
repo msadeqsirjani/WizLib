@@ -7,5 +7,10 @@ namespace WizLib.Domain.Entities
         public string Title { get; set; }
         public string Isbn { get; set; }
         public double Price { get; set; }
+        public int CategoryId { get; set; }
+        public int BookDetailId { get; set; }
+
+        public Category Category { get; set; }
+        public BookDetail BookDetail { get; set; }
     }
 }
