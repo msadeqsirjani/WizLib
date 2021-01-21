@@ -22,6 +22,15 @@ namespace WizLib.Infra.Data.Persistence
             builder.ApplyConfiguration(new BookConfiguration());
 
             base.OnModelCreating(builder);
+
+            try
+            {
+                Database.Migrate();
+            }
+            catch
+            {
+                //ignore
+            }
         }
     }
 }
