@@ -1,4 +1,5 @@
-﻿using WizLib.Domain.Common;
+﻿using System.Collections.Generic;
+using WizLib.Domain.Common;
 
 namespace WizLib.Domain.Entities
 {
@@ -14,5 +15,7 @@ namespace WizLib.Domain.Entities
         public Category Category { get; set; }
         public BookDetail BookDetail { get; set; }
         public Publisher Publisher { get; set; }
+
+        public List<Author> Authors { get; set; }
     }
 }
