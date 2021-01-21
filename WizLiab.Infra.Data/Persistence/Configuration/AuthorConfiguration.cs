@@ -23,6 +23,8 @@ namespace WizLib.Infra.Data.Persistence.Configuration
                 .IsRequired()
                 .HasMaxLength(64);
 
+            builder.Ignore(x => x.Fullname);
+
             base.Configure(builder);
         }
     }
