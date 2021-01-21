@@ -28,15 +28,6 @@ namespace WizLib.Infra.Data.Persistence
             builder.ApplyConfiguration(new PublisherConfiguration());
 
             base.OnModelCreating(builder);
-
-            try
-            {
-                Database.Migrate();
-            }
-            catch
-            {
-                //ignore
-            }
         }
     }
 }
