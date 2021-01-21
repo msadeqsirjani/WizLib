@@ -8,7 +8,10 @@ namespace WizLib.Infra.Data.Persistence.Configuration.Common
     {
         public virtual void Configure(EntityTypeBuilder<TEntity> builder)
         {
-            builder?.HasKey(b => b.Id);
+            builder.Property(x => x.Id)
+                .ValueGeneratedOnAdd();
+
+            builder.HasKey(b => b.Id);
         }
     }
 
@@ -16,7 +19,10 @@ namespace WizLib.Infra.Data.Persistence.Configuration.Common
     {
         public virtual void Configure(EntityTypeBuilder<TEntity> builder)
         {
-            builder?.HasKey(b => b.Id);
+            builder.Property(x => x.Id)
+                .ValueGeneratedOnAdd();
+
+            builder.HasKey(b => b.Id);
         }
     }
 }
