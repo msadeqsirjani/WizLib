@@ -13,11 +13,13 @@ namespace WizLib.Infra.Data.Persistence
 
         public DbSet<Category> Categories { get; set; }
         public DbSet<Genre> Genres { get; set; }
+        public DbSet<Book> Books { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.ApplyConfiguration(new CategoryConfiguration());
             builder.ApplyConfiguration(new GenreConfiguration());
+            builder.ApplyConfiguration(new BookConfiguration());
 
             base.OnModelCreating(builder);
         }
