@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WizLib.Infra.Data.Persistence;
 
 namespace WizLib.Infra.Data.Persistence.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210121072750_AddRelationBetweenBook&CategoryToWizLibDb")]
+    partial class AddRelationBetweenBookCategoryToWizLibDb
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -56,9 +58,6 @@ namespace WizLib.Infra.Data.Persistence.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<int>("BookDetailId")
-                        .HasColumnType("int");
-
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
 
@@ -79,33 +78,9 @@ namespace WizLib.Infra.Data.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("BookDetailId")
-                        .IsUnique();
-
                     b.HasIndex("CategoryId");
 
                     b.ToTable("Books");
-                });
-
-            modelBuilder.Entity("WizLib.Domain.Entities.BookDetail", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
-
-                    b.Property<int>("NumberOfChapters")
-                        .HasColumnType("int");
-
-                    b.Property<int>("NumberOfPages")
-                        .HasColumnType("int");
-
-                    b.Property<double?>("Weight")
-                        .HasColumnType("float");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("BookDetails");
                 });
 
             modelBuilder.Entity("WizLib.Domain.Entities.Category", b =>
@@ -169,26 +144,13 @@ namespace WizLib.Infra.Data.Persistence.Migrations
 
             modelBuilder.Entity("WizLib.Domain.Entities.Book", b =>
                 {
-                    b.HasOne("WizLib.Domain.Entities.BookDetail", "BookDetail")
-                        .WithOne("Book")
-                        .HasForeignKey("WizLib.Domain.Entities.Book", "BookDetailId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("WizLib.Domain.Entities.Category", "Category")
                         .WithMany("Books")
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("BookDetail");
-
                     b.Navigation("Category");
-                });
-
-            modelBuilder.Entity("WizLib.Domain.Entities.BookDetail", b =>
-                {
-                    b.Navigation("Book");
                 });
 
             modelBuilder.Entity("WizLib.Domain.Entities.Category", b =>
