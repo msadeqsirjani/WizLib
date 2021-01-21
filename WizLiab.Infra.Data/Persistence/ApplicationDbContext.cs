@@ -23,7 +23,7 @@ namespace WizLib.Infra.Data.Persistence
             builder.ApplyConfiguration(new GenreConfiguration());
             builder.ApplyConfiguration(new BookConfiguration());
             builder.ApplyConfiguration(new AuthorConfiguration());
-            builder.ApplyConfiguration(new PublisherConfiguration())
+            builder.ApplyConfiguration(new PublisherConfiguration());
 
             base.OnModelCreating(builder);
 
