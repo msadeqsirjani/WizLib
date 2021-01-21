@@ -9,8 +9,10 @@ namespace WizLib.Domain.Entities
         public double Price { get; set; }
         public int CategoryId { get; set; }
         public int BookDetailId { get; set; }
+        public int PublisherId { get; set; }
 
         public Category Category { get; set; }
         public BookDetail BookDetail { get; set; }
+        public Publisher Publisher { get; set; }
     }
 }
