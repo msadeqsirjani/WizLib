@@ -16,7 +16,8 @@ namespace WizLib.Infra.Data.Persistence.Configuration
             builder.Property(x => x.Isbn)
                 .IsRequired()
                 .HasMaxLength(16)
-                .HasColumnName("ISBN");
+                .HasColumnName("ISBN")
+                .HasColumnType("VARCHAR");
 
             builder.Property(x => x.Price)
                 .IsRequired()
