@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.Linq;
 using WizLib.Infra.Data.Persistence;
 
 namespace WizLib.Web.Controllers
@@ -14,7 +15,9 @@ namespace WizLib.Web.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            var categories = _db.Categories.ToList();
+
+            return View(categories);
         }
     }
 }
