@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using WizLib.Domain.Entities;
 using WizLib.Infra.Data.Persistence;
@@ -73,6 +74,68 @@ namespace WizLib.Web.Controllers
                 return NotFound();
 
             _db.Publishers.Remove(publisher);
+            _db.SaveChanges();
+
+            return RedirectToAction(nameof(Index));
+        }
+
+        public IActionResult CreateMultiple2()
+        {
+            var publishers = new List<Publisher>();
+
+            for (var i = 0; i < 2; i++)
+            {
+                publishers.Add(new Publisher()
+                {
+                    Name = Guid.NewGuid().ToString(),
+                    Location = Guid.NewGuid().ToString()
+                });
+            }
+
+            _db.Publishers.AddRange(publishers);
+
+            _db.SaveChanges();
+
+            return RedirectToAction(nameof(Index));
+        }
+
+        public IActionResult CreateMultiple5()
+        {
+            var publishers = new List<Publisher>();
+
+            for (var i = 0; i < 5; i++)
+            {
+                publishers.Add(new Publisher
+                {
+                    Name = Guid.NewGuid().ToString(),
+                    Location = Guid.NewGuid().ToString()
+                });
+            }
+
+            _db.Publishers.AddRange(publishers);
+
+            _db.SaveChanges();
+
+            return RedirectToAction(nameof(Index));
+        }
+
+        public IActionResult RemoveMultiple2()
+        {
+            var publishers = _db.Publishers.OrderBy(x => Guid.NewGuid()).Take(2);
+
+            _db.Publishers.RemoveRange(publishers);
+
+            _db.SaveChanges();
+
+            return RedirectToAction(nameof(Index));
+        }
+
+        public IActionResult RemoveMultiple5()
+        {
+            var publishers = _db.Publishers.OrderBy(x => Guid.NewGuid()).Take(5);
+
+            _db.Publishers.RemoveRange(publishers);
+
             _db.SaveChanges();
 
             return RedirectToAction(nameof(Index));
