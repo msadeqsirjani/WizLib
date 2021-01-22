@@ -94,7 +94,7 @@ namespace WizLib.Web.Controllers
                 });
             }
 
-            _db.AddRange(categories);
+            _db.Categories.AddRange(categories);
 
             _db.SaveChanges();
 
@@ -113,7 +113,7 @@ namespace WizLib.Web.Controllers
                 });
             }
 
-            _db.AddRange(categories);
+            _db.Categories.AddRange(categories);
 
             _db.SaveChanges();
 
