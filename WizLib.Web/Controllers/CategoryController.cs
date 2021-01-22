@@ -36,7 +36,10 @@ namespace WizLib.Web.Controllers
             }
             else
             {
-                var category = new Category();
+                var category = new Category()
+                {
+                    Title = Guid.NewGuid().ToString()
+                };
 
                 return View(category);
             }
