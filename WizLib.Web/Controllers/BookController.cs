@@ -107,6 +107,8 @@ namespace WizLib.Web.Controllers
 
             _db.Books.Remove(book);
 
+            _db.SaveChanges();
+
             return RedirectToAction(nameof(Index));
         }
     }
