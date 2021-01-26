@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\WizLiab.Infra.Data\WizLiab.Infra.Data.csproj" />
     <ProjectReference Include="..\WizLib.Domain\WizLib.Domain.csproj" />
   </ItemGroup>
