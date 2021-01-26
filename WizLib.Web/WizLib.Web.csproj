@@ -23,4 +23,8 @@
     <ProjectReference Include="..\WizLib.Domain\WizLib.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Views\Book\NewFolder\" />
+  </ItemGroup>
+
 </Project>
