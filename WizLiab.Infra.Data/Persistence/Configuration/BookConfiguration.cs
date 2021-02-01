@@ -37,6 +37,7 @@ namespace WizLib.Infra.Data.Persistence.Configuration
                 .WithMany(x => x.Books)
                 .HasForeignKey(x => x.PublisherId);
 
+
             base.Configure(builder);
         }
     }
