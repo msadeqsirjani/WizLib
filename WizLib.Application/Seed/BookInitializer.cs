@@ -43,7 +43,7 @@ namespace WizLib.Application.Seed
         {
             var random = new Random();
 
-            return $"{Books[random.Next(Length)]} {Guid.NewGuid().ToString()[..6]}";
+            return $"{Books[random.Next(Length)]} ({Guid.NewGuid().ToString()[..6]})";
         }
     }
 }
