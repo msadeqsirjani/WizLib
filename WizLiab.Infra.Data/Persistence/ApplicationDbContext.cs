@@ -18,6 +18,8 @@ namespace WizLib.Infra.Data.Persistence
         public DbSet<Author> Authors { get; set; }
         public DbSet<Publisher> Publishers { get; set; }
 
+        public DbSet<AuthorBook> AuthorBooks { get; set; }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.ApplyConfiguration(new CategoryConfiguration());
@@ -26,6 +28,7 @@ namespace WizLib.Infra.Data.Persistence
             builder.ApplyConfiguration(new BookDetailConfiguration());
             builder.ApplyConfiguration(new AuthorConfiguration());
             builder.ApplyConfiguration(new PublisherConfiguration());
+            builder.ApplyConfiguration(new AuthorBookConfiguration());
 
             base.OnModelCreating(builder);
         }
