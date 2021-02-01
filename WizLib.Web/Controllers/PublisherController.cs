@@ -59,7 +59,7 @@ namespace WizLib.Web.Controllers
             }
             else
             {
-                _db.Update(publisher);
+                _db.Publishers.Attach(publisher);
             }
 
             _db.SaveChanges();
