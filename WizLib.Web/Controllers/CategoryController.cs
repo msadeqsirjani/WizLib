@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using WizLib.Application.Seed;
 using WizLib.Domain.Entities;
 using WizLib.Infra.Data.Persistence;
 
@@ -38,7 +39,7 @@ namespace WizLib.Web.Controllers
             {
                 var category = new Category()
                 {
-                    Title = Guid.NewGuid().ToString()
+                    Title = CategoryInitializer.Seed()
                 };
 
                 return View(category);
@@ -90,7 +91,7 @@ namespace WizLib.Web.Controllers
             {
                 categories.Add(new Category
                 {
-                    Title = Guid.NewGuid().ToString()
+                    Title = CategoryInitializer.Seed()
                 });
             }
 
@@ -109,7 +110,7 @@ namespace WizLib.Web.Controllers
             {
                 categories.Add(new Category
                 {
-                    Title = Guid.NewGuid().ToString()
+                    Title = CategoryInitializer.Seed()
                 });
             }
 
