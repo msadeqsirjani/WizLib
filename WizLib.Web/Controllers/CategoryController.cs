@@ -58,7 +58,7 @@ namespace WizLib.Web.Controllers
             }
             else
             {
-                _db.Categories.Update(category);
+                _db.Categories.Attach(category);
             }
 
             _db.SaveChanges();
