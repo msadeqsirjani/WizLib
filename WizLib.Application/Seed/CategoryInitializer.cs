@@ -38,7 +38,7 @@ namespace WizLib.Application.Seed
         {
             var random = new Random();
 
-            return $"{Categories[random.Next(Length)]} {Guid.NewGuid().ToString()[..6]}";
+            return $"{Categories[random.Next(Length)]} ({Guid.NewGuid().ToString()[..6]})";
         }
     }
 }
