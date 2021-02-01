@@ -39,7 +39,7 @@ namespace WizLib.Web.Controllers
             {
                 var publisher = new Publisher
                 {
-                    Name = PublisherInitializer.Seed(),
+                    Name = PublisherInitializer.Publisher(),
                     Location = Guid.NewGuid().ToString()
                 };
 
@@ -88,7 +88,7 @@ namespace WizLib.Web.Controllers
             {
                 publishers.Add(new Publisher()
                 {
-                    Name = PublisherInitializer.Seed(),
+                    Name = PublisherInitializer.Publisher(),
                     Location = Guid.NewGuid().ToString()
                 });
             }
@@ -108,7 +108,7 @@ namespace WizLib.Web.Controllers
             {
                 publishers.Add(new Publisher
                 {
-                    Name = PublisherInitializer.Seed(),
+                    Name = PublisherInitializer.Publisher(),
                     Location = Guid.NewGuid().ToString()
                 });
             }
