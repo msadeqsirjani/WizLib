@@ -98,6 +98,62 @@ namespace WizLib.Web.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        public IActionResult Details(int? id)
+        {
+            var categories = _db.Categories.Select(x => new SelectListItem
+            {
+                Text = x.Title,
+                Value = x.Id.ToString()
+            }).ToList();
+
+            var random = new Random();
+
+            var book = _db.Books.Include(x => x.BookDetail).FirstOrDefault(x => x.Id == id);
+
+            if (book == null)
+                return NotFound();
+
+            var bookVm = new BookVm
+            {
+                Book = book,
+                Categories = categories
+            };
+
+            bookVm.Book.BookDetail = new BookDetail
+            {
+                NumberOfChapters = random.Next(0, 20) + 5,
+                NumberOfPages = random.Next(0, 1000) + 100,
+                Weight = (random.NextDouble() + 250.0).Round(3, MidpointRounding.ToEven)
+            };
+
+            return View(bookVm);
+        }
+
+        [HttpPost]
+        public IActionResult Details(BookVm bookVm)
+        {
+            if (bookVm.Book.BookDetail.Id.IsDefault())
+            {
+                _db.BookDetails.Add(bookVm.Book.BookDetail);
+                _db.SaveChanges();
+
+                var book = _db.Books.FirstOrDefault(x => x.Id == bookVm.Book.Id);
+
+                if (book == null)
+                    return NotFound();
+
+                book.BookDetailId = bookVm.Book.BookDetail.Id;
+                _db.SaveChanges();
+            }
+            else
+            {
+                _db.BookDetails.Update(bookVm.Book.BookDetail);
+                _db.SaveChanges();
+            }
+
+            return RedirectToAction(nameof(Index));
+        }
+
         public IActionResult Delete(int id)
         {
             var book = _db.Books.FirstOrDefault(x => x.Id == id);
