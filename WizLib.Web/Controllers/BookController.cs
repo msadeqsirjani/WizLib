@@ -24,6 +24,7 @@ namespace WizLib.Web.Controllers
             var books = _db.Books
                 .Include(x => x.Publisher)
                 .Include(x => x.Authors)
+                .OrderBy(x => x.Price)
                 .ToList();
 
             return View(books);
@@ -91,7 +92,7 @@ namespace WizLib.Web.Controllers
             }
             else
             {
-                _db.Books.Update(bookVm.Book);
+                _db.Books.Attach(bookVm.Book);
             }
 
             _db.SaveChanges();
@@ -164,6 +165,16 @@ namespace WizLib.Web.Controllers
 
             _db.Books.Remove(book);
 
+            _db.SaveChanges();
+
+            return RedirectToAction(nameof(Index));
+        }
+
+
+        public IActionResult PlayGround()
+        {
+            var category = _db.Categories.FirstOrDefault();
+            _db.Entry(category).State = EntityState.Modified;
             _db.SaveChanges();
 
             return RedirectToAction(nameof(Index));
