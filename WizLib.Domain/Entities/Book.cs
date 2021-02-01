@@ -18,7 +18,6 @@ namespace WizLib.Domain.Entities
         public Category Category { get; set; }
         public BookDetail BookDetail { get; set; }
         public Publisher Publisher { get; set; }
-
-        public List<Author> Authors { get; set; }
+        public List<AuthorBook> AuthorBooks { get; set; }
     }
 }
