@@ -30,7 +30,7 @@ namespace WizLib.Application.Seed
 
         private static readonly int Length = Publishers.Length;
 
-        public static string Seed()
+        public static string Publisher()
         {
             var random = new Random();
 
