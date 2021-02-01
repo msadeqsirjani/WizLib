@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
+using WizLib.Application.Seed;
 using WizLib.Application.ViewModels;
 using WizLib.Domain.Entities;
 using WizLib.Infra.Data.Persistence;
@@ -50,7 +51,7 @@ namespace WizLib.Web.Controllers
                 {
                     Book = new Book
                     {
-                        Title = Guid.NewGuid().ToString(),
+                        Title = BookInitializer.Seed(),
                         Price = random.Next(15000, 150000),
                         Isbn = Guid.NewGuid().ToString("N")[..16]
                     },
