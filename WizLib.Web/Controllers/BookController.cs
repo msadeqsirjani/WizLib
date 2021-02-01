@@ -23,7 +23,7 @@ namespace WizLib.Web.Controllers
         {
             var books = _db.Books
                 .Include(x => x.Publisher)
-                .Include(x => x.Authors)
+                .Include(x => x.AuthorBooks)
                 .OrderBy(x => x.Price)
                 .ToList();
 
@@ -170,6 +170,44 @@ namespace WizLib.Web.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        public IActionResult ManageAuthors(int id)
+        {
+            var authorBookVm = new AuthorBookVm
+            {
+                AuthorBooks = _db.AuthorBooks
+                    .Include(x => x.AuthorId)
+                    .Include(x => x.Book)
+                    .Where(x => x.BookId == id)
+                    .ToList(),
+                AuthorBook = new AuthorBook()
+                {
+                    BookId = id
+                },
+                Book = _db.Books.FirstOrDefault(x => x.Id == id)
+            };
+
+            var authorsId = authorBookVm.AuthorBooks.Select(x => x.AuthorId).ToList();
+
+            var authors = _db.Authors.Where(x => !authorsId.Contains(x.Id)).ToList();
+
+            authorBookVm.Authors = authors.Select(x => new SelectListItem()
+            {
+                Text = x.Fullname,
+                Value = x.Id.ToString()
+            });
+
+            return View(authorBookVm);
+        }
+
+        [HttpPost]
+        public IActionResult ManageAuthors(AuthorBookVm authorBookVm)
+        {
+            throw new NotImplementedException();
+        }
+        public IActionResult RemoveAuthors()
+        {
+            throw new NotImplementedException();
+        }
 
         public IActionResult PlayGround()
         {
