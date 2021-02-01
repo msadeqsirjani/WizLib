@@ -12,6 +12,6 @@ namespace WizLib.Domain.Entities
         public DateTime Birthdate { get; set; }
         public string Location { get; set; }
 
-        public List<Book> Books { get; set; }
+        public List<AuthorBook> AuthorBooks { get; set; }
     }
 }
