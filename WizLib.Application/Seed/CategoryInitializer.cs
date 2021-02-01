@@ -34,7 +34,7 @@ namespace WizLib.Application.Seed
 
         private static readonly int Length = Categories.Length;
 
-        public static string Seed()
+        public static string Category()
         {
             var random = new Random();
 
