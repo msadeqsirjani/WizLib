@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using WizLib.Application.Seed;
 using WizLib.Domain.Entities;
 using WizLib.Infra.Data.Persistence;
 
@@ -41,8 +42,8 @@ namespace WizLib.Web.Controllers
 
                 var author = new Author
                 {
-                    Forename = Guid.NewGuid().ToString(),
-                    Surname = Guid.NewGuid().ToString(),
+                    Forename = AuthorInitializer.Forename(),
+                    Surname = AuthorInitializer.Surname(),
                     Location = Guid.NewGuid().ToString(),
                     Birthdate = DateTime.Now.AddDays(days)
                 };
@@ -95,8 +96,8 @@ namespace WizLib.Web.Controllers
 
                 authors.Add(new Author()
                 {
-                    Forename = Guid.NewGuid().ToString(),
-                    Surname = Guid.NewGuid().ToString(),
+                    Forename = AuthorInitializer.Forename(),
+                    Surname = AuthorInitializer.Surname(),
                     Location = Guid.NewGuid().ToString(),
                     Birthdate = DateTime.Now.AddDays(days)
                 });
@@ -119,8 +120,8 @@ namespace WizLib.Web.Controllers
                 var days = random.Next(-16384 * 2, 0);
                 authors.Add(new Author()
                 {
-                    Forename = Guid.NewGuid().ToString(),
-                    Surname = Guid.NewGuid().ToString(),
+                    Forename = AuthorInitializer.Forename(),
+                    Surname = AuthorInitializer.Surname(),
                     Location = Guid.NewGuid().ToString(),
                     Birthdate = DateTime.Now.AddDays(days)
                 });
