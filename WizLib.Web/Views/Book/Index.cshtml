@@ -48,8 +48,11 @@
                             @book.Publisher.Name
                         </td>
                         <td>
+
+
+
                             @{
-                                var authors = book.Authors.Aggregate(new StringBuilder(), (current, author) => current.Append($"{author.Fullname}, ")).ToString();
+                                var authors = book.AuthorBooks.Aggregate(new StringBuilder(), (current, authorBook) => current.Append($"{authorBook.Author.Fullname}, ")).ToString();
                             }
 
                             @authors.Trim().TrimEnd(',')
