@@ -39,7 +39,7 @@ namespace WizLib.Web.Controllers
             {
                 var category = new Category()
                 {
-                    Title = CategoryInitializer.Seed()
+                    Title = CategoryInitializer.Category()
                 };
 
                 return View(category);
@@ -91,7 +91,7 @@ namespace WizLib.Web.Controllers
             {
                 categories.Add(new Category
                 {
-                    Title = CategoryInitializer.Seed()
+                    Title = CategoryInitializer.Category()
                 });
             }
 
@@ -110,7 +110,7 @@ namespace WizLib.Web.Controllers
             {
                 categories.Add(new Category
                 {
-                    Title = CategoryInitializer.Seed()
+                    Title = CategoryInitializer.Category()
                 });
             }
 
