@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using WizLib.Application.Seed;
 using WizLib.Domain.Entities;
 using WizLib.Infra.Data.Persistence;
 
@@ -38,7 +39,7 @@ namespace WizLib.Web.Controllers
             {
                 var publisher = new Publisher
                 {
-                    Name = Guid.NewGuid().ToString(),
+                    Name = PublisherInitializer.Seed(),
                     Location = Guid.NewGuid().ToString()
                 };
 
@@ -87,7 +88,7 @@ namespace WizLib.Web.Controllers
             {
                 publishers.Add(new Publisher()
                 {
-                    Name = Guid.NewGuid().ToString(),
+                    Name = PublisherInitializer.Seed(),
                     Location = Guid.NewGuid().ToString()
                 });
             }
@@ -107,7 +108,7 @@ namespace WizLib.Web.Controllers
             {
                 publishers.Add(new Publisher
                 {
-                    Name = Guid.NewGuid().ToString(),
+                    Name = PublisherInitializer.Seed(),
                     Location = Guid.NewGuid().ToString()
                 });
             }
