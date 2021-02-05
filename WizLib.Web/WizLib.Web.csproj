@@ -6,13 +6,25 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Cactus.Blade.Core" Version="1.2.5" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="5.0.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.2">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.2" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.1" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\WizLiab.Infra.Data\WizLiab.Infra.Data.csproj" />
+    <ProjectReference Include="..\WizLib.Application\WizLib.Application.csproj" />
     <ProjectReference Include="..\WizLib.Domain\WizLib.Domain.csproj" />
-    <ProjectReference Include="..\WizLib.Infra.IoC\WizLib.Infra.IoC.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Views\Book\NewFolder\" />
   </ItemGroup>
 
 </Project>
