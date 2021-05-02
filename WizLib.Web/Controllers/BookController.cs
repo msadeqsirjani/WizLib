@@ -24,6 +24,7 @@ namespace WizLib.Web.Controllers
             var books = _db.Books
                 .Include(x => x.Publisher)
                 .Include(x => x.AuthorBooks)
+                .ThenInclude(x => x.Author)
                 .OrderBy(x => x.Price)
                 .ToList();
 
@@ -175,7 +176,7 @@ namespace WizLib.Web.Controllers
             var authorBookVm = new AuthorBookVm
             {
                 AuthorBooks = _db.AuthorBooks
-                    .Include(x => x.AuthorId)
+                    .Include(x => x.Author)
                     .Include(x => x.Book)
                     .Where(x => x.BookId == id)
                     .ToList(),
@@ -202,11 +203,28 @@ namespace WizLib.Web.Controllers
         [HttpPost]
         public IActionResult ManageAuthors(AuthorBookVm authorBookVm)
         {
-            throw new NotImplementedException();
+            if (authorBookVm.AuthorBook.BookId == 0 || authorBookVm.AuthorBook.AuthorId == 0)
+                return RedirectToAction(nameof(ManageAuthors), new { id = authorBookVm.AuthorBook.BookId });
+
+            _db.AuthorBooks.Add(authorBookVm.AuthorBook);
+            _db.SaveChanges();
+
+            return RedirectToAction(nameof(ManageAuthors), new { @id = authorBookVm.AuthorBook.BookId });
         }
-        public IActionResult RemoveAuthors()
+
+        [HttpPost]
+        public IActionResult RemoveAuthors([FromRoute] int id, AuthorBookVm authorBookVm)
         {
-            throw new NotImplementedException();
+            var bookId = authorBookVm.Book.Id;
+            var authorBook = _db.AuthorBooks.FirstOrDefault(x => x.AuthorId == id && x.BookId == bookId);
+
+            if (authorBook == null)
+                return NotFound();
+
+            _db.AuthorBooks.Remove(authorBook);
+            _db.SaveChanges();
+
+            return RedirectToAction(nameof(ManageAuthors), new { id = bookId });
         }
 
         public IActionResult PlayGround()
